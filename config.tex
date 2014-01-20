@@ -1,0 +1,82 @@
+%######################################
+%### Schriftart und Rechtschreibung ###
+%######################################
+ 
+\usepackage[ngerman]{babel}       	% neue deutsche Rechtschreibung
+ %\usepackage[utf8]{inputenc}      	% Eingabe ist UTF-8 - nicht bei XeLaTex
+  
+  
+\usepackage[onehalfspacing]{setspace}    % Zeilenabstand definieren (1.5 zeilig)
+
+\usepackage{mathptmx}	 % Times
+\usepackage{fontspec}				% notwendig für Open Type Schriftarten
+% \usepackage[T1]{fontenc}        	% bessere und richtige Schriftausgabe
+ \setmainfont{Arial}
+
+\addtokomafont{section}{\setmainfont{Arial}}
+\addtokomafont{subsection}{\setmainfont{Arial}}
+\addtokomafont{subsubsection}{\setmainfont{Arial}}
+\addtokomafont{sectionentry}{\setmainfont{Arial}}
+
+%#################################
+%### Formatierung Seitenränder ###
+%#################################
+ 
+\usepackage{geometry}
+ \geometry
+ {  a4paper,
+	left=45mm,     %linker Seitenrand
+	right=20mm,    %rechter Seitenrand
+ 	top=30mm,      %oben der Abstand
+ 	bottom=30mm    %Unten der Abstand
+ }
+
+%####################
+%### Mathe-Pakete ###
+%####################
+ 
+%mehr unter: http://www.golatex.de/tutorials-dokumentationen-pakete-fuer-mathematik-mit-latex-t2017.html
+ \usepackage{amsmath}    %Grundpaket für mathematische Formeln
+ %\usepackage{amsthm}    %Paket für Theoreme
+ %\usepackage{amscd}     %Paket für Diagramme
+ %\usepackage{amsfont}   %Schriftart
+
+%#####################
+%### Zusatz-Pakete ###
+%#####################
+ 
+ \usepackage{textcomp}                  % beinhaltet Sonderzeichen (äöüÖÜÄß...)
+ \usepackage{eurosym}                   % offizielles Eurosymbol \euro
+ \usepackage[printonlyused]{acronym}    % für das Abkürzungsverzeichnis
+ \usepackage{graphicx}                  % für externe Grafiken/Bilder
+ \usepackage{epsfig}					% Einbinden von eps Grafiken
+ \usepackage{fancyhdr}					% Gestaltung von Kopf- Fußzeilen
+ \usepackage[nottoc]{tocbibind} 		% Anzeigen des Literaturverzeichnisses im TOC
+ \usepackage{float} 					% Notwendig fuer figure[h]
+ %\usepackage{tocbasic}					% Verzeichnisse
+ %\usepackage{listings}
+ \usepackage{setspace}
+ 
+ \usepackage{natbib}		% Literaturverzeichnis
+ 
+%###################################
+%### Konfiguration Verzeichnisse ###
+%###################################
+\newif\iflistoffigures
+\newif\iflistoftables
+\newif\ifacronym
+
+\DeclareNewTOC[%
+  type=formel,
+  name={Formel},%
+  hang=3em,%
+  listname={Formelverzeichnis}
+]{for}
+
+\newcommand*{\formelentry}[1]{%
+  \addcontentsline{for}{formel}{\protect\numberline{\theequation}#1}%
+}
+
+% Text unter Abbildungen
+\renewcommand{\bflabel}[1]{\normalfont{\normalsize{#1}}\hfill}
+

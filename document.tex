@@ -1,0 +1,146 @@
+% Vorgaben Assignment aus Studienheft SQL03
+% Formatvorgaben fuer den Text
+% Umfang: 8 - 10 Seiten (inkl. Abbildungen und Tabellen, aber ohne Deckblatt,
+% Gliederung und Literaturverzeichnis, Eidesstattliche Erklaerung
+% Zeilenabstand: 1,5
+% Schriftart: frei
+% Schriftgrad: 12 pt
+% Variablen, physikalische Groessen und Funktionszeichen werden kursiv gedruckt.
+% Korrekturrand: links: 4,5 cm, rechts 2,0 cm, oben und unten jeweils 3,0 cm
+% Deckblatt: (Adresse, AKAD-E-Mail-Adresse, Immatrikulationsnummer, Modul-
+% bezeichnung, Thema, Datum, Felder für Korrektor)
+% Gliederung (1 Seite)
+% Literaturverzeichnis (3 - 5 Literaturquellen  z. B. Lehrbuecher, aktuelle Fachartikel recherchieren)
+% Eidesstattliche Erklaerung (unterschrieben und fest eingebunden)
+% Bearbeitungsdauer: 2 Monate
+
+\documentclass[
+ paper=a4,      %Papierformat
+ fontsize=12pt, %Schriftgröße
+ twoside=false, %einseitiger Druck, ansonsten Leerseiten bei Verzeichnissen
+ %BCOR=16mm     %Bindekorrektur
+ toc=listof,    %fügt Abbildungs- & Tabellenverzeichnis ins Inhaltsverzeichnis ein
+ %draft,			% Boxen anzeigen..
+ fleqn			%Ausrichtung linksbündig (Formeln)
+]{scrartcl}
+
+\include{config}
+\include{einstellungen}
+
+\pagenumbering{Roman}
+
+\makeatletter
+\newcommand{\bibstyle@dinat}{\bibpunct{[}{]}{;}{a}{,}{,~}}
+\makeatother
+
+%----------------------------------------------------------------------------------------
+% Worttrennungen
+
+%\hyphenation{ }
+%----------------------------------------------------------------------------------------
+\addto{\captionsngerman}{%
+\renewcommand{\refname}{Literaturverzeichnis}
+}
+
+
+\begin{document}
+
+\include{deckblatt}
+
+\setcounter{page}{1}
+% Verzeichnisse werden mit einzeiligem Abstand gesetzt
+\begin{spacing}{1.0} 
+\newpage
+
+% Inhaltsverzeichnis
+\tableofcontents                                    %Inhaltsverzeichnis
+\newpage
+
+% Abbildungsverzeichnis
+\iflistoffigures
+\listoffigures 
+\newpage
+\fi
+
+% Tabellenverzeichnis
+\iflistoftables
+\listoftables 
+\newpage
+\fi
+
+% Abkürzungsverzeichnis
+\ifacronym
+\include{abkuerzungen}
+\fi
+
+% Formelverzeichnis
+%\listofformels
+%\addcontentsline{toc}{section}{Formelverzeichnis} 
+%\newpage
+
+\end{spacing} 
+
+\clearpage
+
+\newcounter{romanPagenumber} 
+\setcounter{romanPagenumber}{\value{page}} % Roemische Seitenanzahl speichern.
+
+\pagestyle{fancy}
+	\fancyhead{}
+	\fancyhead[L]{\textsc{\STitel}} % Textsc --> Kapitälchen
+	\fancyhead[R]{\thepage}
+	\fancyfoot{}
+
+% Alles ins Verzeichnis, auch wenn nicht zitiert...
+%\nocite{*} 
+
+\pagenumbering{arabic}
+
+\begin{spacing}{1.5} % Zeilenabstand: 1,5 fuer den Textteil
+
+\input{einleitung}
+
+\input{hauptteil}
+
+
+\input{schluss}
+
+\end{spacing}
+
+\clearpage
+
+% Literaturverzeichniss - Ab hier wieder Roemische Seitenzahlen
+\pagestyle{plain}
+\pagenumbering{Roman}
+\setcounter{page}{\theromanPagenumber}
+
+\bibliographystyle{dinat}
+
+\bibliography{literatur}
+\onehalfspacing
+\clearpage
+% Anhang...
+%\include{anhang}
+%\clearpage
+
+\pagestyle{empty} 
+\thispagestyle{empty}
+
+\begin{center}
+{\Large Eidesstattliche Erkl"arung}
+\vspace*{4cm}\end{center}
+\noindent
+Ich versichere, dass ich das beiliegende Assignment selbstst"andig verfasst, keine anderen als die angegebenen Quellen und Hilfsmittel benutzt sowie alle w"ortlich oder sinngem"a"s "ubernommenen Stellen in der Arbeit gekennzeichnet habe. 
+\vspace{3cm}
+
+\hspace{-0.8cm}
+\rule[0.5ex]{6.5cm}{1pt}
+\hspace{1.3cm}
+\rule[0.5ex]{6.5cm}{1pt} \\
+(Datum, Ort)
+\hspace{6.0cm}(Unterschrift)
+
+%\input{drucktest}
+
+\end{document}
+

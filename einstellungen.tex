@@ -1,0 +1,63 @@
+%Titel
+\newcommand*{\Titel}{Titel auf dem Deckblatt}
+
+%Seitentitel
+\newcommand*{\STitel}{Seitenüberschrift}
+
+%Betreff
+\newcommand*{\Betreff}{Assignment im Modul XXX99} 
+
+\newcommand*{\Untertitel}{Eventuell ein Untertitel}
+
+%Betreuer
+\newcommand*{\Betreuer}{Betreuer: Max Mustermann} 
+
+%Vor- und Nachname
+\newcommand*{\Name}{Max Mustermann}
+
+%Straße und Hausnummer
+\newcommand*{\Strasse}{Musterstr. 123} 
+
+%Plz und Ort
+\newcommand*{\PlzOrt}{12345 Musterstadt} 
+
+%Immatrikulationsnummer
+\newcommand*{\Immatrikulationsnummer}{1 234 567}
+
+%Email 
+\newcommand*{\Email}{max.mustermann@akad.de} 
+
+%Hochschule 
+\newcommand*{\Hochschule}{AKAD Hochschule Stuttgart} 
+
+
+% Verzeichnisse (Wenn nicht benötigt, Zeile mit % auskommentieren oder löschen
+
+% Abbildungsverzeichnis 
+\listoffigurestrue
+
+% Tabellenverzeichnis
+%\listoftablestrue
+
+% Abkürzungsverzeichnis
+\acronymtrue
+
+% Formelverzeichnis
+%\listofformelntrue
+
+%###################################
+%### Konfiguration PDF Erzeugung ###
+%###################################
+
+\usepackage[pdfa,xetex]{hyperref}	% PDF/A-konforme Flags erwünscht
+
+\hypersetup{
+	pdfauthor={Enrico George},
+	pdfcreator={},	% \XeTeX{} nicht möglich
+	pdfdisplaydoctitle,		% Dokument-Titel anzeigen
+	pdfkeywords={akad, assignment, meta, information, pdf, hyperref, latex},
+	pdftitle={\STitel},
+	unicode,
+	colorlinks=false,
+	pdfborder={0 0 0},
+}
